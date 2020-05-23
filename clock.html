@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时间</title>
+    <style>
+        body {
+            background: #0d1320;
+            overflow: hidden;
+        }
+
+        #timer {
+            text-align: center;
+            font-size: 56vh;
+            font-weight: bold;
+            line-height: 56vh;
+            color: #e2ecfd;
+            background: linear-gradient(to bottom, #dfeafa, #9c9d9e);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        #date {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 28vh;
+            font-weight: bold;
+            color: #919191;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="date">05月14日</div>
+    <div id="timer"></div>
+
+    <script>
+        let showSymbl = true
+
+        function clock() {
+            let now = new Date()
+            let hour = now.getHours() + ''
+            let minute = now.getMinutes() + ''
+            let month = (now.getMonth() + 1) + ''
+            let day = now.getDate() + ''
+            if (showSymbl) {
+                document.getElementById('timer').innerHTML =
+                    `${hour.padStart(2,'0')}<span>:</span>${minute.padStart(2,'0')}`
+
+            } else {
+                document.getElementById('timer').innerHTML =
+                    `${hour.padStart(2,'0')}<span style="color:#0d1320">:</span>${minute.padStart(2,'0')}`
+            }
+            document.getElementById('date').innerHTML = `${month.padStart(2,'0')}月${day.padStart(2,'0')}日`
+
+            showSymbl = !showSymbl
+        }
+        clock()
+        setInterval(() => {
+            clock()
+        }, 1000)
+    </script>
+</body>
+
+</html>
